@@ -22,5 +22,5 @@
   
   
 # Ending
-  * Promise has a long-term development prospect, I hope you can grasp it as soon as possible
+  * 📖 Promise has a long-term development prospect, I hope you can grasp it as soon as possible,It worthy learing about already
 
