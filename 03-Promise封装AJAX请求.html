@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Promise封装AJAX</h1>
+    <hr>
+    <button class="btn">发送AJAX请求</button>
+    <script>
+        const btn = document.querySelector('.btn');
+        btn.addEventListener('click',function(){
+
+            const p = new Promise((resolve,reject)=>{
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET','https://api.uixsj.cn/hitokoto/get?type=social');
+                xhr.send();
+                xhr.onreadystatechange = function(){
+                if(xhr.readyState===4) {
+                    if(xhr.status>=200 && xhr.status<300){
+                        resolve(xhr.response)
+                    }else {
+                        reject(xhr.status)
+
+                    }
+                }
+            }
+            })
+            p.then((value)=>{
+                console.log(value);
+            },(reason)=>{
+                console.log(reason);
+            })
+            console.log(p);
+            // const xhr = new XMLHttpRequest();
+            // xhr.open('GET','https://api.uixsj.cn/hitokoto/get?type=social');
+            // xhr.send();
+            // xhr.onreadystatechange = function(){
+            //     if(xhr.readyState===4) {
+            //         if(xhr.status>=200 && xhr.status<300){
+            //             console.log(xhr.response);
+            //         }else {
+            //             console.log(xhr.status);
+
+            //         }
+            //     }
+            // }
+        })
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const p = new Promise((resolve,reject)=>{
+            // resolve('hello')
+            //当没有异步回调参与的时候是先改变状态再执行回调
+
+            setTimeout(()=>{
+                resolve('hello')
+            },1000)
+            // 当包含异步任务先执行then方法后执行改变状态
+        })
+
+        p.then(value=>{
+            console.log(value);
+        },reason=>{})
+    </script>
+</body>
+</html>

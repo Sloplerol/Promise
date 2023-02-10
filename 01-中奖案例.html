@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>这是一个promise实例</h3>
+    <hr>
+    <button class="btn">点击抽奖</button>
+    <h3 style="display: none" class="zhong">恭喜你中奖了</h3>
+    <h3 style="display: none" class="gun">下次再来吧</h3>
+    <script>
+        const btn = document.querySelector('.btn');
+        const zhong = document.querySelector('.zhong');
+        const gun = document.querySelector('.gun');
+        function Random(m,n){
+            return Math.ceil(Math.random()*(n-m+1))+m-1;
+        } 
+        btn.addEventListener('click',function(){
+            
+            const p = new Promise((resolve,reject)=>{
+                // promise函数包裹一个异步操作
+                let n = Random(1,100);
+                setTimeout(()=>{
+                if(n<=30) {
+                    // Promise传递参数
+                    resolve(n);
+                    // 将promise的状态设置为成功
+                }else {
+                    reject(n);
+                    // 将promise的状态设置为失败
+            }
+            },2000)
+            })
+            p.then((value)=>{
+                // 成功的回调
+                zhong.style.display = 'block';
+                gun.style.display = 'none';
+                alert('中奖了值为'+value);
+            },(reason)=>{
+                // 失败的回调
+                zhong.style.display = 'none';
+                gun.style.display = 'block';
+                alert('没中值为'+reason);
+            })
+        })
+        
+    </script>
+</body>
+</html>

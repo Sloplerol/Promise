@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Promise.resolve
+        const p = Promise.resolve(232342);
+        console.log(p);
+        // 当传入的参数为非promise对象的时候返回promise对象的状态都为成功
+
+        const h = Promise.resolve(new Promise((resolve,reject)=>{
+            // resolve('hello');
+            reject('Error');
+        }))
+        // 当传入参数为promise对象的时候外部Promise状态由内部决定
+        console.log(h);
+        h.catch(reason=>{
+            console.log(reason);
+        })
+    </script>
+</body>
+</html>
